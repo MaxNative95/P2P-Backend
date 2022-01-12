@@ -1,3 +1,8 @@
+const bcrypt = require('bcrypt');
+const _ = require('underscore');
+
+const Usuario = require('../models/usuario');
+
 
 const userController = (req, res, next) => {
     try {
