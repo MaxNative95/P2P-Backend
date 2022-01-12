@@ -1,7 +1,18 @@
+require('dotenv').config()
 const express = require('express');
 const http = require('http');
 const app = express();
+const mongoose = require('mongoose');
 
+mongoose.connect(process.env.URLDB, 
+    {useNewUrlParser:true},
+     (err, res) => {
+
+    if (err) throw err;
+
+    console.log('Base de datos ONLINE');
+
+});
 //port
 const port = 3006;
 //routes imported
@@ -21,12 +32,7 @@ var STATIC_CHANNELS = [{
     participants: 0,
     id: 1,
     sockets: []
-}, {
-    name: 'Funny',
-    participants: 0,
-    id: 2,
-    sockets: []
-}];
+},];
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
